@@ -140,8 +140,6 @@ class App extends React.Component {
             columnOrder: [...newState.columnOrder, newColumnId]
           };
 
-          //新增的大于3
-
         }
       }
     }
@@ -151,11 +149,15 @@ class App extends React.Component {
       const columnId = newState.columnOrder[i];
       let column = newState.columns[columnId];
       if (column.taskIds.length === 0) {
-        newState.columnOrder.pop();
+        //删除columnId
+        const idx = newState.columnOrder.indexOf(columnId);
+        if (idx > -1) {
+          // newState.columnOrder.pop();
+          newState.columnOrder.splice(idx, 1, );
+        }
         newState.columns[columnId] = null;
-      } else {
-        break;
       }
+      
     }
 
 
